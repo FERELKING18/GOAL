@@ -32,6 +32,9 @@ jobs:
         with:
           accept-android-sdk-licenses: true
           log-accepted-android-sdk-licenses: false
+      
+      - name: Analyze code
+        run: flutter analyze
 
       - name: Get dependencies
         run: flutter pub get

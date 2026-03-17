@@ -219,8 +219,7 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
 extension AdaptiveScaffoldState on State<AdaptiveScaffold> {
   void updateNavBarStyle() {
     if (mounted && this is _AdaptiveScaffoldState) {
-      (_AdaptiveScaffoldState).this as _AdaptiveScaffoldState
-        .._updateNavBar();
+      (this as _AdaptiveScaffoldState)._updateNavBar();
     }
   }
 }

@@ -1,4 +1,4 @@
-# ⚽ Football Matches App - Real-Time Sports Tracker
+# ⚽ Football Matches App - Real-Time Sports Trackers
 
 A professional Flutter application showcasing **Clean Architecture**, **Real-time WebSocket Integration**, and **Enterprise-level Development Practices**.
 

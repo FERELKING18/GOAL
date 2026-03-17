@@ -10,6 +10,17 @@ class LoadYesterdayMatchesEvent extends MatchesEvent {}
 
 class LoadTomorrowMatchesEvent extends MatchesEvent {}
 
+class LoadAllUpcomingMatchesEvent extends MatchesEvent {
+  /// Days to look ahead (default 30 days)
+  final int daysAhead;
+  final bool includePast;
+
+  const LoadAllUpcomingMatchesEvent({
+    this.daysAhead = 30,
+    this.includePast = true,
+  });
+}
+
 class RefreshMatchesEvent extends MatchesEvent {}
 
 class StartRealTimeUpdatesEvent extends MatchesEvent {}

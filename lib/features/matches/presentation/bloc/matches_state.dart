@@ -57,6 +57,30 @@ class MatchesLoaded extends MatchesState {
   }
 }
 
+class AllMatchesLoaded extends MatchesState {
+  final List<Match> allMatches; // All matches grouped intelligently
+  final bool isRefreshing;
+  final bool isRealTimeConnected;
+
+  const AllMatchesLoaded({
+    required this.allMatches,
+    this.isRefreshing = false,
+    this.isRealTimeConnected = false,
+  });
+
+  AllMatchesLoaded copyWith({
+    List<Match>? allMatches,
+    bool? isRefreshing,
+    bool? isRealTimeConnected,
+  }) {
+    return AllMatchesLoaded(
+      allMatches: allMatches ?? this.allMatches,
+      isRefreshing: isRefreshing ?? this.isRefreshing,
+      isRealTimeConnected: isRealTimeConnected ?? this.isRealTimeConnected,
+    );
+  }
+}
+
 class MatchesError extends MatchesState {
   final String message;
 

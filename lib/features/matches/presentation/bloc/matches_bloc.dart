@@ -29,6 +29,7 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
     on<LoadTodayMatchesEvent>(_onLoadTodayMatches);
     on<LoadYesterdayMatchesEvent>(_onLoadYesterdayMatches);
     on<LoadTomorrowMatchesEvent>(_onLoadTomorrowMatches);
+    on<LoadAllUpcomingMatchesEvent>(_onLoadAllUpcomingMatches);
     on<RefreshMatchesEvent>(_onRefreshMatches);
     on<StartRealTimeUpdatesEvent>(_onStartRealTimeUpdates);
     on<StopRealTimeUpdatesEvent>(_onStopRealTimeUpdates);
@@ -82,6 +83,55 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
       _updateStateWithMatches(emit, tomorrowMatches: matches);
     } catch (e) {
       emit(MatchesError('Verify connection'));
+    }
+  }
+
+  Future<void> _onLoadAllUpcomingMatches(
+    LoadAllUpcomingMatchesEvent event,
+    Emitter<MatchesState> emit,
+  ) async {
+    emit(MatchesLoading());
+
+    try {
+      // Fetch matches using the existing use cases
+      final List<Match> yesterdayMatches;
+      final List<Match> todayMatches;
+      final List<Match> tomorrowMatches;
+
+      try {
+        yesterdayMatches = event.includePast ? await getYesterdayMatches() : [];
+      } catch (e) {
+        yesterdayMatches = [];
+      }
+
+      try {
+        todayMatches = await getTodayMatches();
+      } catch (e) {
+        todayMatches = [];
+      }
+
+      try {
+        tomorrowMatches = await getTomorrowMatches();
+      } catch (e) {
+        tomorrowMatches = [];
+      }
+
+      // Combine all matches
+      final allMatches = [
+        ...yesterdayMatches,
+        ...todayMatches,
+        ...tomorrowMatches,
+      ];
+
+      // Sort by date
+      allMatches.sort((a, b) => a.utcDate.compareTo(b.utcDate));
+
+      emit(AllMatchesLoaded(
+        allMatches: allMatches,
+        isRealTimeConnected: false,
+      ));
+    } catch (e) {
+      emit(MatchesError('Failed to load matches: ${e.toString()}'));
     }
   }
 
@@ -151,9 +201,10 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
     MatchUpdatedEvent event,
     Emitter<MatchesState> emit,
   ) {
+    final updatedMatch = event.match;
+
     if (state is MatchesLoaded) {
       final currentState = state as MatchesLoaded;
-      final updatedMatch = event.match;
 
       final updatedTodayMatches = _updateMatchInList(
         currentState.todayMatches,
@@ -173,6 +224,14 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
         yesterdayMatches: updatedYesterdayMatches,
         tomorrowMatches: updatedTomorrowMatches,
       ));
+    } else if (state is AllMatchesLoaded) {
+      final currentState = state as AllMatchesLoaded;
+      final updatedAllMatches = _updateMatchInList(
+        currentState.allMatches,
+        updatedMatch,
+      );
+
+      emit(currentState.copyWith(allMatches: updatedAllMatches));
     }
   }
 

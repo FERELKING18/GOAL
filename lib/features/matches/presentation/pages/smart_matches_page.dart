@@ -21,8 +21,6 @@ class SmartMatchesPage extends StatefulWidget {
 }
 
 class _SmartMatchesPageState extends State<SmartMatchesPage> {
-  bool _isRefreshing = false;
-
   @override
   void initState() {
     super.initState();
@@ -37,14 +35,8 @@ class _SmartMatchesPageState extends State<SmartMatchesPage> {
   }
 
   Future<void> _onRefresh() async {
-    setState(() {
-      _isRefreshing = true;
-    });
     context.read<MatchesBloc>().add(RefreshMatchesEvent());
     await Future.delayed(const Duration(seconds: 1));
-    setState(() {
-      _isRefreshing = false;
-    });
   }
 
   @override
@@ -93,7 +85,7 @@ class _SmartMatchesPageState extends State<SmartMatchesPage> {
                               ? _buildEmptyState()
                               : GroupedMatchesList<Match>(
                                   matches: state.allMatches,
-                                  getDateTime: (match) => match.utcDate,
+                                  getDateTime: (match) => match.matchDate,
                                   matchItemBuilder: (match, index) {
                                     return Padding(
                                       padding: const EdgeInsets.symmetric(

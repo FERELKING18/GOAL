@@ -135,10 +135,10 @@ class _MatchesPageState extends State<MatchesPage> with TickerProviderStateMixin
               return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.08),
+        color: Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
                     width: 1,
                   ),
                 ),
@@ -158,7 +158,7 @@ class _MatchesPageState extends State<MatchesPage> with TickerProviderStateMixin
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF86F14D).withOpacity(0.3),
+              color: const Color(0xFF86F14D).withValues(alpha: 0.3),
               blurRadius: 8,
               offset: const Offset(0, 2),
                     ),
@@ -265,7 +265,7 @@ class _MatchesPageState extends State<MatchesPage> with TickerProviderStateMixin
               competitionName: entry.key,
               matches: entry.value,
             )
-          ).toList(),
+          ),
           
           // Bottom padding
           const SizedBox(height: 100),
@@ -306,7 +306,7 @@ class _MatchesPageState extends State<MatchesPage> with TickerProviderStateMixin
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.red.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
@@ -327,15 +327,15 @@ class _MatchesPageState extends State<MatchesPage> with TickerProviderStateMixin
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.red.withOpacity(0.08),
-              Colors.red.withOpacity(0.03),
+              Colors.red.withValues(alpha: 0.08),
+              Colors.red.withValues(alpha: 0.03),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: Colors.red.withOpacity(0.3),
+            color: Colors.red.withValues(alpha: 0.3),
             width: 1,
               ),
             ),
@@ -355,7 +355,7 @@ class _MatchesPageState extends State<MatchesPage> with TickerProviderStateMixin
                   .slideX(begin: 0.3, duration: 500.ms)
                   .fadeIn(),
               );
-            }).toList(),
+            }),
           ],
         ),
       ),

@@ -87,20 +87,6 @@ class GroupedMatchesList<T> extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: _getGroupColor(group).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              '${sortedGroups[sortedGroups.indexWhere((e) => e.key == group)].value.length}',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: _getGroupColor(group),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
         ],
       ),
     ).animate().slideX(begin: -0.2, duration: 300.ms).fadeIn();

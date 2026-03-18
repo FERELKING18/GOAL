@@ -81,61 +81,6 @@ class MatchCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCompetitionHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 20,
-          height: 20,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: match.competition!.logo.isNotEmpty
-                ? Image.network(
-                    match.competition!.logo,
-                    width: 20,
-                    height: 20,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[600],
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Icon(
-                          Icons.sports_soccer,
-                          size: 12,
-                          color: Colors.white,
-                        ),
-                      );
-                    },
-                  )
-                : Container(
-                    width: 20,
-                    height: 20,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[600],
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Icon(
-                      Icons.sports_soccer,
-                      size: 12,
-                      color: Colors.white,
-                    ),
-                  ),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Text(
-          match.competition!.name,
-          style: AppTextStyles.competitionNameSmall,
-        ),
-      ],
-    );
-  }
-
   Widget _buildTeamShirt(Team team) {
     return Container(
       width: 32,
@@ -143,7 +88,7 @@ class MatchCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withValues(alpha: 0.2),
           width: 1,
         ),
       ),

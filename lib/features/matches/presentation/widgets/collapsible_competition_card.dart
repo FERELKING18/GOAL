@@ -130,7 +130,7 @@ class _CollapsibleCompetitionCardState extends State<CollapsibleCompetitionCard>
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
           border: Border.all(
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withValues(alpha: 0.3),
             width: 1,
           ),
         ),
@@ -159,7 +159,7 @@ class _CollapsibleCompetitionCardState extends State<CollapsibleCompetitionCard>
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         border: Border.all(
-          color: Colors.white.withOpacity(0.3),
+          color: Colors.white.withValues(alpha: 0.3),
           width: 1,
         ),
       ),

@@ -113,6 +113,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tomorrow => 'غداً';
 
   @override
+  String get dayAfterTomorrow => 'بعد غداً';
+
+  @override
+  String get dayBeforeYesterday => 'أول أمس';
+
+  @override
+  String daysInFuture(int count) {
+    return 'بعد $count أيام';
+  }
+
+  @override
+  String daysInPast(int count) {
+    return 'منذ $count أيام';
+  }
+
+  @override
   String get noMatches => 'لا توجد مباريات متاحة';
 
   @override

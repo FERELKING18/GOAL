@@ -113,6 +113,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tomorrow => 'Tomorrow';
 
   @override
+  String get dayAfterTomorrow => 'Day After Tomorrow';
+
+  @override
+  String get dayBeforeYesterday => 'Day Before Yesterday';
+
+  @override
+  String daysInFuture(int count) {
+    return '$count days ahead';
+  }
+
+  @override
+  String daysInPast(int count) {
+    return '$count days ago';
+  }
+
+  @override
   String get noMatches => 'No matches available';
 
   @override

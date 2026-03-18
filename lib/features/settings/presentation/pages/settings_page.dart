@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tornet_task/generated/l10n/app_localizations.dart';
 import 'package:tornet_task/core/theme/theme_exports.dart';
-import 'package:tornet_task/core/constants/app_mode_provider.dart';
 import 'package:tornet_task/core/constants/navbar_style_provider.dart';
-import 'package:tornet_task/features/matches/presentation/bloc/matches_bloc.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -14,7 +10,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  late Future<bool> _isDemoMode;
   late Future<BottomNavStyle> _navStyle;
   late Future<ElegantNavBarStyle> _elegantStyle;
   late Future<StylishNavBarStyle> _stylishStyle;
@@ -22,7 +17,6 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-    _isDemoMode = AppModeProvider.isDemoMode();
     _navStyle = NavBarStyleProvider.getNavStyle();
     _elegantStyle = NavBarStyleProvider.getElegantStyle();
     _stylishStyle = NavBarStyleProvider.getStylishStyle();

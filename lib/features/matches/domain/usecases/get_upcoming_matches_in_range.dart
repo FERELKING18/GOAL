@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:intl/intl.dart';
-import '../../../../core/errors/failure.dart';
+import '../../../../core/errors/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/match.dart';
 import '../repositories/matches_repository.dart';

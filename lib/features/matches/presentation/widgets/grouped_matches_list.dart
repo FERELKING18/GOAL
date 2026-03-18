@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../utils/date_grouping.dart';
+import '../../../../core/utils/date_grouping.dart';
 
 class GroupedMatchesList<T> extends StatelessWidget {
   final List<T> matches;

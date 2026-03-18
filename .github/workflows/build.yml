@@ -25,19 +25,22 @@ jobs:
         with:
           flutter-version: '3.41.4'
           channel: 'stable'
-          cache: true
+          cache: false
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
           accept-android-sdk-licenses: true
           log-accepted-android-sdk-licenses: false
-      
-      - name: Analyze code
-        run: flutter analyze
 
+      - name: Clean Flutter cache
+        run: flutter clean
+      
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
 
       - name: Check Flutter version
         run: flutter --version

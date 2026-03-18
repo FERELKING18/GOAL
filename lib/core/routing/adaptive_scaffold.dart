@@ -173,39 +173,9 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
           hasNotch: false,
           currentIndex: _selectedIndex,
           onTap: _onNavTap,
-          option: _getStylishOption(style),
         );
       },
     );
-  }
-
-  Option _getStylishOption(StylishNavBarStyle style) {
-    switch (style) {
-      case StylishNavBarStyle.style1:
-        return Option(
-          backgroundColor: Colors.white,
-        );
-      case StylishNavBarStyle.style2:
-        return Option(
-          backgroundColor: Colors.black87,
-        );
-      case StylishNavBarStyle.style3:
-        return Option(
-          backgroundColor: const Color(0xFF2E3236),
-        );
-      case StylishNavBarStyle.style4:
-        return Option(
-          backgroundColor: Colors.deepPurple.shade800,
-        );
-      case StylishNavBarStyle.style5:
-        return Option(
-          backgroundColor: Colors.blue.shade900,
-        );
-      case StylishNavBarStyle.style6:
-        return Option(
-          backgroundColor: Colors.teal.shade700,
-        );
-    }
   }
 }
 

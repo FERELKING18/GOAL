@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:intl/intl.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/match.dart';
@@ -12,18 +11,9 @@ class GetUpcomingMatchesInRange implements UseCase<List<Match>, GetUpcomingMatch
 
   @override
   Future<Either<Failure, List<Match>>> call(GetUpcomingMatchesInRangeParams params) async {
-    // Generate date range
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-
-    // Start date: yesterday or today depending on includePast
-    final startDate = params.includePast 
-        ? today.subtract(const Duration(days: 1))
-        : today;
-
-    // Note: Simplified implementation - in production, implement full range fetch
-    // For now, returning empty to avoid compilation errors
     try {
+      // Simplified implementation - in production, implement full range fetch
+      // For now, returning empty to avoid compilation errors
       return const Right([]);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(e.message));

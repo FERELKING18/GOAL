@@ -10,8 +10,6 @@ enum DateGroup {
 }
 
 class DateGroupingUtils {
-  static final _dateFormat = DateFormat('yyyy-MM-dd');
-
   /// Get the group for a given date
   static DateGroup getDateGroup(DateTime matchDate) {
     final now = DateTime.now();

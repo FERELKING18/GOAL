@@ -184,32 +184,26 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
       case StylishNavBarStyle.style1:
         return Option(
           backgroundColor: Colors.white,
-          opacity: 0.8,
         );
       case StylishNavBarStyle.style2:
         return Option(
           backgroundColor: Colors.black87,
-          activeBarStyle: ActiveBarStyle.gradient,
         );
       case StylishNavBarStyle.style3:
         return Option(
           backgroundColor: const Color(0xFF2E3236),
-          activeBarStyle: ActiveBarStyle.animated,
         );
       case StylishNavBarStyle.style4:
         return Option(
           backgroundColor: Colors.deepPurple.shade800,
-          activeBarStyle: ActiveBarStyle.surrounding,
         );
       case StylishNavBarStyle.style5:
         return Option(
           backgroundColor: Colors.blue.shade900,
-          opacity: 0.9,
         );
       case StylishNavBarStyle.style6:
         return Option(
           backgroundColor: Colors.teal.shade700,
-          activeBarStyle: ActiveBarStyle.vertical,
         );
     }
   }

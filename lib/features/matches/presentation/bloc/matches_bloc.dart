@@ -94,9 +94,9 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
 
     try {
       // Fetch matches using the existing use cases
-      final List<Match> yesterdayMatches;
-      final List<Match> todayMatches;
-      final List<Match> tomorrowMatches;
+      late List<Match> yesterdayMatches;
+      late List<Match> todayMatches;
+      late List<Match> tomorrowMatches;
 
       try {
         yesterdayMatches = event.includePast ? await getYesterdayMatches() : [];
@@ -124,7 +124,7 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
       ];
 
       // Sort by date
-      allMatches.sort((a, b) => a.utcDate.compareTo(b.utcDate));
+      allMatches.sort((a, b) => a.matchDate.compareTo(b.matchDate));
 
       emit(AllMatchesLoaded(
         allMatches: allMatches,

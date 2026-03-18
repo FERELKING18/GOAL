@@ -49,7 +49,7 @@ class MatchCard extends StatelessWidget {
                   const SizedBox(width: 16),
                   
                   // Time/Score (center)
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: _buildCenterContent(),
                   ),
